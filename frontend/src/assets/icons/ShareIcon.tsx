@@ -2,7 +2,7 @@ import Svg, { Path } from 'react-native-svg';
 import React from 'react';
 import { IconProps } from './type';
 
-export const MessageIcon = (props: IconProps) => {
+export const ShareIcon = (props: IconProps) => {
     const { width = 24, height = 24, color = "#000" } = props;
     return (
         <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">

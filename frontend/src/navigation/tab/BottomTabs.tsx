@@ -1,18 +1,48 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ExploreScreen, HomeScreen, MarketScreen, ProfileScreen, ReelsScreen } from '../../screens';
-import { Logo } from "../../assets/icons";
+import { HomeHeaderRight, HomeHeaderTitle, ProfileHeaderRight, ProfileHeaderTitle } from "../../components";
+import { HomeIcon, MarketIcon, ReelsIcon, SearchIcon } from "../../assets/icons";
+import { TouchableOpacity } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
+
+
+
 export const BottomTabNavigator = () => {
-    return <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} options={{
-            headerLeft: props => <Logo {...props} />
-        }} />
-        <Tab.Screen name="Explore" component={ExploreScreen} />
-        <Tab.Screen name="Reels" component={ReelsScreen} />
-        <Tab.Screen name="Market" component={MarketScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+    return (
+        <Tab.Navigator screenOptions={{
+            headerTitleAlign: 'left',
+            tabBarHideOnKeyboard: true,
+            tabBarShowLabel: false,
+            tabBarActiveTintColor: '#000',
+            tabBarInactiveTintColor: '#000',
+            tabBarButton: props => <TouchableOpacity{...props} />
+        }}>
+            <Tab.Screen name="Home" component={HomeScreen} options={{
+                tabBarIcon: HomeIcon,
+                headerTitle: (props) => <HomeHeaderTitle {...props} />,
+                headerRight: (props) => <HomeHeaderRight {...props} />
+            }} />
+            <Tab.Screen name="Explore" component={ExploreScreen} options={{
+                headerShown: false,
+                tabBarIcon: SearchIcon,
+            }} />
+            <Tab.Screen name="Reels" component={ReelsScreen} options={{
+                headerShown: false,
+                tabBarIcon: ReelsIcon,
+                tabBarActiveBackgroundColor: '#000'
+            }} />
+            <Tab.Screen name="Market" component={MarketScreen} options={{
+                tabBarIcon: MarketIcon,
+                headerTitle: "Shop",
+                headerRight: (props) => <ProfileHeaderRight {...props} />
+            }} />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{
+                headerTitle: (props) => <ProfileHeaderTitle username="username" {...props} />,
+                headerRight: (props) => <ProfileHeaderRight {...props} />
+            }} />
+        </Tab.Navigator >
+    )
 }
