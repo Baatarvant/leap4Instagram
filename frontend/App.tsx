@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { RootStackNavigator } from "./src/navigation";
 import { AuthProvider } from "./src/providers";
 
+
 const App = () => {
   return (
     <NavigationContainer>
