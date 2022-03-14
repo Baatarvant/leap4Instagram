@@ -1,9 +1,9 @@
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Path, Rect } from 'react-native-svg';
 import React from 'react';
 import { IconProps } from './type';
 
 export const MarketIcon = (props: IconProps) => {
-    const { width = 24, height = 24, color = "#000" } = props;
+    const { width = 24, height = 24, color = "#000", focused = false } = props;
     return (
         <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
             <Path
@@ -18,11 +18,13 @@ export const MarketIcon = (props: IconProps) => {
                 d="M12.2761 2.8C11.0812 2.8 10.1125 3.76867 10.1125 4.96359V6.1419H8.3125V4.96359C8.3125 2.77456 10.0871 1 12.2761 1C14.4651 1 16.2397 2.77456 16.2397 4.96359V6.1419H14.4397V4.96359C14.4397 3.76867 13.471 2.8 12.2761 2.8Z"
                 fill={color}
             />
+            <Rect x="6" y="19" width="12" height="3" rx="1" fill={focused ? color : 'none'} />
+            <Rect x="4" y="7" width="16" height="13" rx="2" fill={focused ? color : 'none'} />
             <Path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M12.2757 12.3118C13.4706 12.3118 14.4393 11.3431 14.4393 10.1482L14.4393 9.91256C14.4393 9.41551 14.8422 9.01256 15.3393 9.01256C15.8363 9.01256 16.2393 9.41551 16.2393 9.91256L16.2393 10.1482C16.2393 12.3373 14.4647 14.1118 12.2757 14.1118C10.0866 14.1118 8.31208 12.3373 8.31208 10.1482L8.31208 9.91257C8.31208 9.41551 8.71502 9.01257 9.21208 9.01257C9.70913 9.01257 10.1121 9.41551 10.1121 9.91257L10.1121 10.1482C10.1121 11.3431 11.0807 12.3118 12.2757 12.3118Z"
-                fill={color}
+                fill={focused ? "#fff" : color}
             />
         </Svg>
     )
