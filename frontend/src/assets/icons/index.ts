@@ -9,5 +9,6 @@ export * from "./HeartIcon";
 export * from "./MessengerIcon";
 export * from "./BurgerIcon";
 export * from "./ChevronDownIcon";
+export * from "./ProfileIcon";
 export * from "./Logo";
 export * from "./DownArrowIcon";

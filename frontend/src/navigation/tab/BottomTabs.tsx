@@ -2,8 +2,8 @@ import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ExploreScreen, HomeScreen, MarketScreen, ProfileScreen, ReelsScreen } from '../../screens';
 import { HomeHeaderRight, HomeHeaderTitle, ProfileHeaderRight, ProfileHeaderTitle } from "../../components";
-import { HomeIcon, MarketIcon, ReelsIcon, SearchIcon } from "../../assets/icons";
-import { TouchableOpacity } from "react-native";
+import { HomeIcon, MarketIcon, ProfileIcon, ReelsIcon, SearchIcon } from "../../assets/icons";
+import { TouchableOpacity, View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +21,7 @@ export const BottomTabNavigator = () => {
             tabBarButton: props => <TouchableOpacity{...props} />
         }}>
             <Tab.Screen name="Home" component={HomeScreen} options={{
+                // headerShadowVisible: false,
                 tabBarIcon: HomeIcon,
                 headerTitle: (props) => <HomeHeaderTitle {...props} />,
                 headerRight: (props) => <HomeHeaderRight {...props} />
@@ -40,6 +41,7 @@ export const BottomTabNavigator = () => {
                 headerRight: (props) => <ProfileHeaderRight {...props} />
             }} />
             <Tab.Screen name="Profile" component={ProfileScreen} options={{
+                tabBarIcon: ProfileIcon,
                 headerTitle: (props) => <ProfileHeaderTitle username="username" {...props} />,
                 headerRight: (props) => <ProfileHeaderRight {...props} />
             }} />
