@@ -34,7 +34,7 @@ export const HomeStoryTray = (props: Props) => {
                 showsHorizontalScrollIndicator={false}
                 data={data}
                 renderItem={({ item }) => <Story />}
-                keyExtractor={item => item.id}
+                keyExtractor={(_item, index) => index.toString()}
             />
         </View>
     );

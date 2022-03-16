@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FlatList, StyleSheet, View, Image, Dimensions, TouchableOpacity } from "react-native";
-import { HeartIcon, MessengerIcon, ShareIcon } from "../../assets/icons";
+import { CommentIcon, HeartIcon, ShareIcon, SaveIcon } from "../../assets/icons";
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -30,7 +30,7 @@ export const PostImage = () => {
                         <HeartIcon />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconButton}>
-                        <MessengerIcon />
+                        <CommentIcon />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconButton}>
                         <ShareIcon />
@@ -43,7 +43,7 @@ export const PostImage = () => {
                 </View>
                 <View style={styles.save}>
                     <TouchableOpacity style={styles.iconButton}>
-                        <ShareIcon />
+                        <SaveIcon />
                     </TouchableOpacity>
                 </View>
             </View>
