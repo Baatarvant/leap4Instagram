@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { HomeStoryTray, PostImage } from "../components";
+import { HomeStoryTray, PostImage, PostHeader } from "../components";
 
 export const HomeScreen = () => {
     return <FlatList
@@ -10,6 +10,7 @@ export const HomeScreen = () => {
         data={[0, 0, 0, 0, 0, 0, 0, 0, 0]}
         renderItem={({ item }) => (
             <View style={styles.item}>
+                <PostHeader />
                 <PostImage />
             </View>
         )}
