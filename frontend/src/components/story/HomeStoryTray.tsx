@@ -34,7 +34,11 @@ export const HomeStoryTray = (props: Props) => {
                 showsHorizontalScrollIndicator={false}
                 data={data}
                 renderItem={({ item }) => <Story />}
+<<<<<<< HEAD
                 keyExtractor={item => item.id}
+=======
+                keyExtractor={(_item, index) => index.toString()}
+>>>>>>> a3aa32e (navigation)
             />
         </View>
     );

@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
 })
 
 export type Props = {
-    uri: string;
-    username: string;
+    uri?: string;
+    username?: string;
     sponsored?: boolean
 };
 
-export const UserHeader: React.FC<Props> = ({ uri, username, sponsored = false }) => {
+export const PostHeader: React.FC<Props> = ({ uri = 'https://picsum.photos/200', username = 'Username', sponsored = false }) => {
 
     return (
         <View style={styles.container}>
