@@ -10,5 +10,12 @@ export * from "./MessengerIcon";
 export * from "./BurgerIcon";
 export * from "./ChevronDownIcon";
 export * from "./ProfileIcon";
+<<<<<<< HEAD
+=======
+export * from "./GridIcon";
+export * from "./SpreadIcon";
+export * from "./SaveIcon";
+export * from "./CommentIcon";
+>>>>>>> a3aa32e (navigation)
 export * from "./Logo";
 export * from "./DownArrowIcon";
