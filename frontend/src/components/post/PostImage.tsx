@@ -4,7 +4,6 @@ import { CommentIcon, HeartIcon, ShareIcon, SaveIcon } from "../../assets/icons"
 
 const screenWidth = Dimensions.get('window').width;
 
-
 export const PostImage = () => {
     const [id, setId] = useState(0);
     return (
@@ -31,11 +30,11 @@ export const PostImage = () => {
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconButton}>
                         <CommentIcon />
-                    </TouchableOpacity>
+                    </TouchableOpacity >
                     <TouchableOpacity style={styles.iconButton}>
                         <ShareIcon />
                     </TouchableOpacity>
-                </View>
+                </View >
                 <View style={styles.indicators}>
                     {[0, 0, 0, 0].map((_item, index) =>
                         <View style={[styles.indicator, { backgroundColor: index === id ? '#1FA1FF' : '#c4c4c4' }]} />
@@ -44,10 +43,10 @@ export const PostImage = () => {
                 <View style={styles.save}>
                     <TouchableOpacity style={styles.iconButton}>
                         <SaveIcon />
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </View>
+                    </TouchableOpacity >
+                </View >
+            </View >
+        </View >
     )
 };
 

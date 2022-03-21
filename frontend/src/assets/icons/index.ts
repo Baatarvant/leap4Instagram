@@ -1,3 +1,5 @@
+import { StackIcon } from "./StackIcon";
+
 export * from "./HomeIcon";
 export * from "./MarketIcon";
 export * from "./ShareIcon";
@@ -16,3 +18,6 @@ export * from "./SaveIcon";
 export * from "./CommentIcon";
 export * from "./Logo";
 export * from "./DownArrowIcon";
+export * from "./ArrowRightIcon";
+export * from "./StackIcon";
+export * from "./ExitIcon";
