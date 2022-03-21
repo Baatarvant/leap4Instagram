@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import { FlatList, StyleSheet, View, Image, Dimensions, TouchableOpacity } from "react-native";
+import { FlatList, StyleSheet, View, Image, Dimensions, TouchableOpacity, Text } from "react-native";
 import { CommentIcon, HeartIcon, ShareIcon, SaveIcon } from "../../assets/icons";
 
 const screenWidth = Dimensions.get('window').width;
 
 export const PostImage = () => {
     const [id, setId] = useState(0);
+    const data = [0, 0, 0, 0];
     return (
         <View style={styles.container}>
+            {data.length > 0 &&
+                <View style={styles.numberIndicatorContainer}>
+                    <Text style={styles.numberIndicator}>{`${id + 1} / ${data.length}`}</Text>
+                </View>
+            }
             <FlatList
                 bounces={false}
                 horizontal
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
                 style={styles.list}
-                data={[0, 0, 0, 0]}
+                data={data}
                 renderItem={({ item }) => (
                     <Image style={styles.thumbnail} source={{ uri: 'https://picsum.photos/400' }} />
                 )}
@@ -89,5 +95,19 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
+    },
+    numberIndicatorContainer: {
+        backgroundColor: "black",
+        position: 'absolute',
+        right: 12,
+        top: 12,
+        zIndex: 2,
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+        borderRadius: 24,
+    },
+    numberIndicator: {
+        color: '#fff',
+        fontSize: 12
     }
 });
