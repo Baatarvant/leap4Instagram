@@ -21,9 +21,13 @@ export const ProfileHeaderTitle = (props: Props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center'
+
     },
     title: {
-        marginRight: 4
+        marginRight: 4,
+        fontWeight: '700',
+        fontSize: 22
     }
 })

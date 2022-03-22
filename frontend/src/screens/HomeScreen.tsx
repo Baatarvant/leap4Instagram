@@ -5,7 +5,7 @@ import { HomeStoryTray, PostImage } from "../components";
 export const HomeScreen = () => {
     return <FlatList
         style={styles.container}
-        ListHeaderComponent={<HomeStoryTray data={[0, 0, 0, 0, 0, 0, 0, 0]} />}
+        ListHeaderComponent={<HomeStoryTray username='username' data={[0, 0, 0, 0, 0, 0, 0, 0]} />}
         showsVerticalScrollIndicator={false}
         data={[0, 0, 0, 0, 0, 0, 0, 0, 0]}
         renderItem={({ item }) => (
