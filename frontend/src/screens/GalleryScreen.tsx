@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Image, FlatList, Dimensions, View, ActivityIndicator, Text, TouchableOpacity } from "react-native";
 import { PhotoIdentifier, GetPhotosParams, getPhotos } from "@react-native-community/cameraroll";
-import { StackIcon } from "../assets/icons";
+import { ArrowRightIcon, ExitIcon, StackIcon } from "../assets/icons";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation";
 
 const width = Dimensions.get('window').width;
 
@@ -11,7 +13,12 @@ interface Data {
     next: boolean
 }
 
-export const GalleryScreen = () => {
+interface Props {
+    navigation: NativeStackNavigationProp<RootStackParamList, 'Gallery'>
+}
+
+export const GalleryScreen = (props: Props) => {
+    const { navigation } = props;
     const [data, setData] = useState<Data | null>(null);
     const [selected, setSelected] = useState<number | number[]>(0);
 
@@ -23,11 +30,11 @@ export const GalleryScreen = () => {
     const getData = (after?: string) => {
         getPhotos({ ...options, after: after ?? undefined })
             .then((res) => {
-                setData({
-                    photos: res.edges,
+                setData(prev => ({
+                    photos: prev ? [...prev.photos, ...res.edges] : res.edges,
                     end: res.page_info.end_cursor,
                     next: res.page_info.has_next_page
-                })
+                }))
             })
             .catch((err) => { console.log(err) })
     }
@@ -38,6 +45,26 @@ export const GalleryScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <View style={styles.header}>
+                <View style={styles.headerGroup}>
+                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
+                        <ExitIcon />
+                    </TouchableOpacity>
+                    <Text style={styles.headerText}>Add Post</Text>
+                </View>
+                <TouchableOpacity
+                    onPress={() => {
+                        if (data) {
+                            navigation.navigate(
+                                'CreatePost',
+                                { images: Array.isArray(selected) ? selected.map((n) => data.photos[n]) : [data.photos[selected]] }
+                            )
+                        }
+                    }}
+                >
+                    <ArrowRightIcon />
+                </TouchableOpacity>
+            </View>
             {data &&
                 <FlatList
                     style={styles.list}
@@ -130,6 +157,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+    header: {
+        padding: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    headerGroup: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    headerText: {
+        fontSize: 16,
+        marginLeft: 12,
+        fontWeight: 'bold'
+    },
     list: {
         flex: 1,
         backgroundColor: '#fff',
@@ -176,5 +218,5 @@ const styles = StyleSheet.create({
     indicatorText: {
         fontSize: 14,
         color: '#fff'
-    }
+    },
 })
