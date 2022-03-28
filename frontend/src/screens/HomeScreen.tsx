@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { HomeStoryTray, PostImage } from "../components";
+import { HomeStoryTray, Post } from "../components";
 
 export const HomeScreen = () => {
     return <FlatList
@@ -8,9 +8,9 @@ export const HomeScreen = () => {
         ListHeaderComponent={<HomeStoryTray username='username' data={[0, 0, 0, 0, 0, 0, 0, 0]} />}
         showsVerticalScrollIndicator={false}
         data={[0, 0, 0, 0, 0, 0, 0, 0, 0]}
-        renderItem={({ item }) => (
-            <View style={styles.item}>
-                <PostImage />
+        renderItem={({ item, index }) => (
+            <View key={index.toString()} style={styles.item}>
+                <Post />
             </View>
         )}
         keyExtractor={(_item, index) => index.toString()}

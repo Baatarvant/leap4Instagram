@@ -11,10 +11,12 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-community/cameraroll": "^4.1.2",
     "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/material-top-tabs": "^6.1.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
+    "fbjs": "^3.0.4",
     "react": "17.0.2",
     "react-native": "0.67.3",
     "react-native-linear-gradient": "^2.5.6",

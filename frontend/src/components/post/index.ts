@@ -1,1 +1,1 @@
-export * from "./PostImage";
+export * from "./Post";

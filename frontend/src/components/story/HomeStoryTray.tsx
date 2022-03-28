@@ -46,7 +46,7 @@ export const HomeStoryTray = (props: Props) => {
                 showsHorizontalScrollIndicator={false}
                 data={data}
                 renderItem={({ item }) => <Story username={props.username} highlights={props.highlights} uri={'https://picsum. photos/60'} />}
-                keyExtractor={item => item.id}
+                keyExtractor={(_item, index) => index.toString()}
             />
         </View>
     );
