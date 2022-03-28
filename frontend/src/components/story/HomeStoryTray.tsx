@@ -4,21 +4,33 @@ import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
     data: any[];
+    username?: string;
+    highlights?: string;
+}
+interface storyProps {
+    uri: string;
+    username?: string;
+    highlights?: string;
 }
 
-const Story = () => {
+
+
+export const Story = (props: storyProps) => {
     return (
         <View>
             <TouchableOpacity >
                 <LinearGradient useAngle angle={45} colors={['#feda75', '#fa7e1e', '#d62976', '#962fbf', '#4f5bd5', '#fd1d1d']} style={styles.gradient}>
                     <View style={styles.avatarContainer}>
-                        <Image style={styles.avatar} source={{
-                            uri: "https://picsum.photos/60"
-                        }} />
+                        <Image style={styles.avatar} source={{ uri: `${props.uri}` }} />
                     </View>
                 </LinearGradient>
             </TouchableOpacity>
-            <Text style={styles.title}>username</Text>
+            {
+                props.username && <Text style={styles.title}>{props.username}</Text> ||
+                props.highlights && <Text style={styles.title}>{props.highlights}</Text>
+            }
+            {
+            }
         </View>
     );
 }
@@ -33,7 +45,7 @@ export const HomeStoryTray = (props: Props) => {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 data={data}
-                renderItem={({ item }) => <Story />}
+                renderItem={({ item }) => <Story username={props.username} highlights={props.highlights} uri={'https://picsum. photos/60'} />}
                 keyExtractor={(_item, index) => index.toString()}
             />
         </View>
