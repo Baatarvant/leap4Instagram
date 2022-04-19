@@ -1,14 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ExploreScreen, HomeScreen, MarketScreen, ProfileScreen, ReelsScreen } from '../../screens';
-import { HomeHeaderRight, HomeHeaderTitle, ProfileHeaderRight, ProfileHeaderTitle } from "../../components";
+import { HomeHeaderRight, HomeHeaderTitle, ProfileHeaderRight, ProfileHeaderTitle, SearchBar } from "../../components";
 import { HomeIcon, MarketIcon, ProfileIcon, ReelsIcon, SearchIcon } from "../../assets/icons";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 const Tab = createBottomTabNavigator();
-
-
-
 
 export const BottomTabNavigator = () => {
     return (
@@ -27,8 +24,8 @@ export const BottomTabNavigator = () => {
                 headerRight: (props) => <HomeHeaderRight {...props} />
             }} />
             <Tab.Screen name="Explore" component={ExploreScreen} options={{
-                headerShown: false,
                 tabBarIcon: SearchIcon,
+                headerTitle: () => <SearchBar />
             }} />
             <Tab.Screen name="Reels" component={ReelsScreen} options={{
                 headerShown: false,
