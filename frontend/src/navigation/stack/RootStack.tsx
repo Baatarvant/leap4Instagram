@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { BottomTabNavigator } from '../tab';
-import { GalleryScreen } from "../../screens";
+import { GalleryScreen, StoryScreen } from "../../screens";
 import { CreatePostScreen } from "../../screens/CreatePostScreen";
 import { PhotoIdentifier } from "@react-native-community/cameraroll";
 
@@ -13,7 +13,8 @@ interface CreatePostScreenProps {
 export type RootStackParamList = {
   Main: undefined,
   Gallery: undefined,
-  CreatePost: CreatePostScreenProps
+  CreatePost: CreatePostScreenProps,
+  ShowStory: undefined;
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -31,6 +32,10 @@ export const RootStackNavigator = () => {
         <RootStack.Screen
           name="CreatePost"
           component={CreatePostScreen}
+        />
+        <RootStack.Screen
+          name="ShowStory"
+          component={StoryScreen}
         />
       </RootStack.Group>
     </RootStack.Navigator>

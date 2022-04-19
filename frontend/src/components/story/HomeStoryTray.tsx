@@ -1,6 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList, Image, StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
+import { StoryScreen } from "../../screens";
 
 interface Props {
     data: any[];
@@ -16,9 +18,10 @@ interface storyProps {
 
 
 export const Story = (props: storyProps) => {
+    const navigation = useNavigation();
     return (
         <View>
-            <TouchableOpacity >
+            <TouchableOpacity onPress={()=> {navigation.navigate('ShowStory')}}>
                 <LinearGradient useAngle angle={45} colors={['#feda75', '#fa7e1e', '#d62976', '#962fbf', '#4f5bd5', '#fd1d1d']} style={styles.gradient}>
                     <View style={styles.avatarContainer}>
                         <Image style={styles.avatar} source={{ uri: `${props.uri}` }} />
