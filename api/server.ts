@@ -7,6 +7,7 @@ import { typeDefs } from "./types";
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => ({ token: req.headers.token }),
 });
 const uri: any = process.env.MONGO_URI;
 mongoose.connect(uri);
