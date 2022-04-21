@@ -1,4 +1,7 @@
 import { User } from "../schemas";
+import jwt from "jsonwebtoken";
+import verify from "../utils/jwt";
+import "dotenv/config";
 
 const addUser = async (_: any, params: any) => {
   const user = new User(params);
@@ -10,7 +13,9 @@ const addUser = async (_: any, params: any) => {
     return error;
   }
 };
-const getUser = async (_: any, params: any) => {
+const getUser = async (_: any, params: any, context: any) => {
+  //console.log(context.token);
+  verify(context.token);
   const user = await User.findOne({
     _id: params._id,
   });
@@ -27,6 +32,10 @@ const loginUser = async (_: any, params: any) => {
   }
   user.password = "N/A";
   //jwt token butsaana
-  return "logged in";
+
+  const token = jwt.sign(user, process.env.ACCESS_TOKEN_KEY as string, {
+    expiresIn: "1h",
+  });
+  return token;
 };
 export { addUser, getUser, loginUser };
