@@ -10,3 +10,7 @@ type Query {
 type Mutation {
   addUser(username: String, email: String, password: String): User
 }
+type Post {
+  post: String
+  timestamp: timestamp
+}
